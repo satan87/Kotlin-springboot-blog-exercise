@@ -11,7 +11,7 @@ import org.springframework.boot.test.web.client.getForEntity
 import org.springframework.http.HttpStatus
 
 @SpringBootTest
-class BlogApplicationTests() {
+class BlogApplicationTests {
 
 	@Test
 	fun contextLoads() {
