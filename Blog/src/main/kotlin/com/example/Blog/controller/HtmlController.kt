@@ -11,13 +11,15 @@ import com.example.Blog.repository.ArticleRepository
 import com.example.Blog.entity.Article
 import com.example.Blog.entity.User
 import com.example.Blog.extension.*
+import com.example.Blog.BlogProperties
 
 @Controller
-class HtmlController(private val repository: ArticleRepository) {
+class HtmlController(private val repository: ArticleRepository, private val properties: BlogProperties) {
 
 	@GetMapping("/")
 	fun blog(model: Model): String {
-		model["title"] = "Blog"
+		model["title"] = properties.title
+		model["banner"] = properties.banner
 		model["articles"] = repository.findAllByOrderByAddedAtDesc().map { it.render() }
 		return "blog"
 	}
